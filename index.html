@@ -1,1 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ætherfall — World Codex</title>
+    <meta name="description" content="A complete codex for the world of Ætherfall: language, map, entities, and history.">
+    <style>
+        /* ============================================================
+               CSS VARIABLES — change these to recolor the entire site
+               ============================================================ */
+        :root {
+            --bg: #f7f3ed;
+            /* warm paper background */
+            --bg-alt: #efeadf;
+            /* slightly darker panels */
+            --text: #2b2b2b;
+            /* main text color */
+            --text-muted: #5e5e5e;
+            /* secondary text */
+            --accent: #8b5e3c;
+            /* warm brown accent */
+            --accent-hover: #6f4a2f;
+            --border: #d4cdc0;
+            /* subtle borders */
+            --link: #7a5230;
+            --link-hover: #4a2f1a;
+            --header-bg: #f0ece4;
+            --code-bg: #ede7db;
+            --font-body: 'Georgia', 'Times New Roman', serif;
+            --font-heading: 'Georgia', 'Times New Roman', serif;
+            --font-mono: 'Courier New', monospace;
+            --max-width: 900px;
+            --radius: 3px;
+            /* minimal, not too rounded */
+        }
 
+        /* ============================================================
+               RESET & BASE
+               ============================================================ */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 1.5rem 3rem 1.5rem;
+        }
+
+        /* ============================================================
+               TYPOGRAPHY
+               ============================================================ */
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 0.75rem;
+            color: var(--text);
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.25rem;
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 0.4rem;
+            margin-top: 3rem;
+            margin-bottom: 1.25rem;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            margin-top: 1.75rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        a {
+            color: var(--link);
+            text-decoration: none;
+            border-bottom: 1px dotted var(--link);
+            transition: color 0.15s ease, border-color 0.15s ease;
+        }
+
+        a:hover {
+            color: var(--link-hover);
+            border-bottom-color: var(--link-hover);
+        }
+
+        ul,
+        ol {
+            margin: 0 0 1.2rem 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.35rem;
+        }
+
+        blockquote {
+            border-left: 3px solid var(--accent);
+            padding: 0.5rem 0 0.5rem 1.25rem;
+            margin: 1.25rem 0;
+            font-style: italic;
+            color: var(--text-muted);
+            background: var(--bg-alt);
+            border-radius: 0 var(--radius) var(--radius) 0;
+        }
+
+        code {
+            font-family: var(--font-mono);
+            background: var(--code-bg);
+            padding: 0.15rem 0.4rem;
+            border-radius: 2px;
+            font-size: 0.9em;
+            border: 1px solid var(--border);
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 2rem 0;
+        }
+
+        /* ============================================================
+               HEADER & NAVIGATION
+               ============================================================ */
+        .site-header {
+            text-align: center;
+            padding: 2.5rem 0 1rem 0;
+            border-bottom: 2px solid var(--border);
+            margin-bottom: 1.5rem;
+            background: var(--header-bg);
+            border-radius: 0 0 var(--radius) var(--radius);
+            padding: 2.5rem 1.5rem 1.25rem 1.5rem;
+        }
+
+        .site-header .subtitle {
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-style: italic;
+            margin-bottom: 1.25rem;
+        }
+
+        .site-nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.4rem;
+            padding: 0.75rem 0 0.25rem 0;
+        }
+
+        .site-nav a {
+            padding: 0.35rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            font-size: 0.9rem;
+            font-family: var(--font-body);
+            background: var(--bg);
+            color: var(--text);
+            text-decoration: none;
+            border-bottom: 1px solid var(--border);
+            transition: all 0.15s ease;
+        }
+
+        .site-nav a:hover {
+            background: var(--accent);
+            color: #fff;
+            border-color: var(--accent);
+            border-bottom-color: var(--accent);
+        }
+
+        /* ============================================================
+               SECTIONS & CONTENT AREAS
+               ============================================================ */
+        .section {
+            margin-bottom: 2.5rem;
+        }
+
+        .section-card {
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-card h3 {
+            margin-top: 0;
+        }
+
+        /* Entity / entry list — like old forum threads */
+        .entry-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .entry-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 0;
+        }
+
+        .entry-list li:last-child {
+            border-bottom: none;
+        }
+
+        .entry-list .entry-name {
+            font-weight: 700;
+            font-size: 1.05rem;
+        }
+
+        .entry-list .entry-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline — like old forum post timestamps */
+        .timeline {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+            bottom: 0.5rem;
+            width: 2px;
+            background: var(--border);
+        }
+
+        .timeline li {
+            position: relative;
+            margin-bottom: 1.25rem;
+            padding-left: 1.25rem;
+        }
+
+        .timeline li::before {
+            content: "";
+            position: absolute;
+            left: -1.5rem;
+            top: 0.6rem;
+            width: 0.6rem;
+            height: 0.6rem;
+            background: var(--accent);
+            border-radius: 50%;
+            border: 2px solid var(--bg);
+        }
+
+        .timeline .era-name {
+            font-weight: 700;
+        }
+
+        .timeline .era-date {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-family: var(--font-mono);
+        }
+
+        .timeline .era-desc {
+            margin-top: 0.2rem;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        /* Table for language examples */
+        .lang-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1.25rem;
+            font-size: 0.95rem;
+        }
+
+        .lang-table th,
+        .lang-table td {
+            border: 1px solid var(--border);
+            padding: 0.5rem 0.75rem;
+            text-align: left;
+        }
+
+        .lang-table th {
+            background: var(--header-bg);
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .lang-table tr:nth-child(even) {
+            background: var(--bg-alt);
+        }
+
+        /* ============================================================
+               MAP PLACEHOLDER
+               ============================================================ */
+        .map-placeholder {
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            background: var(--bg-alt);
+            border: 2px dashed var(--border);
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-style: italic;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .map-placeholder img {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: var(--radius);
+            border: none;
+            /* remove this if you add an actual image */;
+        }
+
+        /* ============================================================
+               FOOTER
+               ============================================================ */
+        .site-footer {
+            text-align: center;
+            padding: 1.5rem 0;
+            border-top: 2px solid var(--border);
+            margin-top: 3rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        /* ============================================================
+               RESPONSIVE
+               ============================================================ */
+        @media (max-width: 600px) {
+            body {
+                padding: 0 0.75rem 2rem 0.75rem;
+                font-size: 0.95rem;
+            }
+
+            h1 {
+                font-size: 1.7rem;
+            }
+
+            h2 {
+                font-size: 1.35rem;
+                margin-top: 2rem;
+            }
+
+            .site-header {
+                padding: 1.5rem 0.75rem 1rem 0.75rem;
+            }
+
+            .site-nav {
+                gap: 0.25rem;
+            }
+
+            .site-nav a {
+                padding: 0.3rem 0.6rem;
+                font-size: 0.8rem;
+            }
+
+            .section-card {
+                padding: 1rem;
+            }
+        }
+
+        /* ============================================================
+               UTILITY
+               ============================================================ */
+        .text-center {
+            text-align: center;
+        }
+        .text-muted {
+            color: var(--text-muted);
+        }
+        .mt-1 {
+            margin-top: 1rem;
+        }
+        .mb-1 {
+            margin-bottom: 1rem;
+        }
+        .no-border {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================================
+    HEADER — World name and tagline. EDIT THESE.
+    ============================================================ -->
+    <header class="site-header">
+        <h1>Ætherfall</h1>
+        <p class="subtitle">— Codex of the Shattered Realm —</p>
+
+        <!-- Navigation — edit link labels as needed -->
+        <nav class="site-nav">
+            <a href="#overview">Overview</a>
+            <a href="#language">Language</a>
+            <a href="#map">Map</a>
+            <a href="#entities">Entities</a>
+            <a href="#history">History</a>
+        </nav>
+    </header>
+
+    <!-- ============================================================
+    OVERVIEW / HOME SECTION
+    ============================================================ -->
+    <section id="overview" class="section">
+        <h2>Overview</h2>
+        <p>
+            Welcome to the codex for <strong>Ætherfall</strong>, a world born from the
+            shattering of the Great Aetheric Veil. This is a living document — manually
+            maintained and updated through GitHub. Every section below can be edited
+            directly in the HTML file. No databases, no frameworks, just a simple page
+            that works.
+        </p>
+        <div class="section-card">
+            <h3>How to Use This Codex</h3>
+            <p>
+                This entire website is contained in a single HTML file. To edit any
+                section, open the file in a text editor, find the relevant
+                <code>&lt;section&gt;</code> tag, and change the text. Save, commit, and
+                push to GitHub — the site updates automatically.
+            </p>
+            <p>
+                Use the navigation above to jump between sections. Each section has
+                clear placeholder content that you can replace with your own lore.
+            </p>
+        </div>
+        <p>
+            <em>Last updated: 2026-01-15</em> <!-- EDIT THIS DATE when you update -->
+        </p>
+    </section>
+
+    <!-- ============================================================
+    LANGUAGE SECTION
+    ============================================================ -->
+    <section id="language" class="section">
+        <h2>The Ætheric Tongue</h2>
+        <p>
+            The language of Ætherfall — known as <strong>Velskar</strong> — is spoken
+            by the <em>Renn</em> (the awakened ones) and written in a script derived
+            from the patterns of falling aether-dust. Below is a small reference
+            grammar and vocabulary. <em>Edit freely to match your constructed language.</em>
+        </p>
+
+        <h3>Phonology</h3>
+        <p>
+            Velskar has 14 consonants and 5 vowels. It favors open syllables
+            (CV, CVC) and has a stress accent on the first syllable of each root.
+            The phoneme <code>/ʃ/</code> (sh) is common in ritual words.
+        </p>
+        <div class="section-card">
+            <h3>Common Phrases</h3>
+            <table class="lang-table">
+                <thead>
+                    <tr>
+                        <th>English</th>
+                        <th>Velskar</th>
+                        <th>Literal Meaning</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Hello / Greetings</td>
+                        <td><em>Vel-sha</em></td>
+                        <td>"Aether be with you"</td>
+                    </tr>
+                    <tr>
+                        <td>Goodbye / Farewell</td>
+                        <td><em>Ren-tok</em></td>
+                        <td>"Walk in the veil"</td>
+                    </tr>
+                    <tr>
+                        <td>Thank you</td>
+                        <td><em>Sha-vel</em></td>
+                        <td>"You honor the aether"</td>
+                    </tr>
+                    <tr>
+                        <td>I understand</td>
+                        <td><em>Ves-ka</em></td>
+                        <td>"I see the pattern"</td>
+                    </tr>
+                    <tr>
+                        <td>Danger</td>
+                        <td><em>Kor-ash</em></td>
+                        <td>"Veil tears"</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>Grammar Notes</h3>
+        <ul>
+            <li><strong>Word order:</strong> Subject–Object–Verb (SOV). Example: <em>Ren sha vel</em> — "Ren honors the aether."</li>
+            <li><strong>Plurality:</strong> Marked by the suffix <em>-enn</em> (e.g., <em>ren</em> "one person" → <em>ren-enn</em> "people").</li>
+            <li><strong>Tense:</strong> Past is indicated by the prefix <em>to-</em>, future by <em>we-</em>.</li>
+            <li><strong>Honorifics:</strong> The suffix <em>-il</em> denotes respect (e.g., <em>Ren-il</em> "Honored One").</li>
+        </ul>
+
+        <h3>Sample Text</h3>
+        <blockquote>
+            <em>Vel-sha to-ren il. We-sha vel-enn. Kor-ash to-ves.</em><br>
+            "The honored one came. The aether will be honored. The veil-tear was seen."
+        </blockquote>
+    </section>
+
+    <!-- ============================================================
+    MAP SECTION
+    ============================================================ -->
+    <section id="map" class="section">
+        <h2>The Shattered Realm — Map</h2>
+        <p>
+            Below is the map of Ætherfall. To add your own map, upload an image file
+            to your GitHub repository and replace the placeholder below with an
+            <code>&lt;img&gt;</code> tag pointing to that file.
+        </p>
+
+        <!-- MAP PLACEHOLDER — Replace with <img src="your-map.png" alt="Map of Ætherfall"> -->
+        <div class="map-placeholder" id="map-area">
+            <p>
+                📍 <strong>Map placeholder</strong><br>
+                <span style="font-size:0.85rem;">Upload your map image to GitHub and add<br>
+                <code>&lt;img src="map.png" alt="Map"&gt;</code> inside the <code>#map-area</code> div.</span>
+            </p>
+        </div>
+
+        <h3>Regions of Ætherfall</h3>
+        <ul class="entry-list">
+            <li>
+                <span class="entry-name">The Ashfall Marches</span>
+                <div class="entry-desc">Northern plains where aether-dust rains like snow. Home to the <em>Dustcallers</em>.</div>
+            </li>
+            <li>
+                <span class="entry-name">The Sunken Caldera</span>
+                <div class="entry-desc">A massive volcanic crater now filled with bioluminescent flora. The <em>Calderan</em> people live along its rim.</div>
+            </li>
+            <li>
+                <span class="entry-name">The Veilscar</span>
+                <div class="entry-desc">A permanent tear in reality running east to west. No one who enters has returned unchanged.</div>
+            </li>
+            <li>
+                <span class="entry-name">The Pale Coast</span>
+                <div class="entry-desc">Chalk-white cliffs and bone-sand beaches. Rumored to be the landing place of the <em>First Arrivals</em>.</div>
+            </li>
+        </ul>
+    </section>
+
+    <!-- ============================================================
+    ENTITIES SECTION
+    ============================================================ -->
+    <section id="entities" class="section">
+        <h2>Entities &amp; Races</h2>
+        <p>
+            The beings of Ætherfall are shaped by the world's fractured aether. Below
+            are the major races and notable creatures. <em>Edit or expand this list freely.</em>
+        </p>
+
+        <h3>Major Races</h3>
+        <ul class="entry-list">
+            <li>
+                <span class="entry-name">The Renn (Awakened)</span>
+                <div class="entry-desc">
+                    Humanoid, pale-skinned, with faint aether-lines glowing beneath their skin.
+                    They are the primary inhabitants of the Ashfall Marches. Height: 1.6–1.9m.
+                    Lifespan: ~120 years. They revere the <em>Veil</em> as sacred.
+                </div>
+            </li>
+            <li>
+                <span class="entry-name">The Calderan</span>
+                <div class="entry-desc">
+                    Stocky, dark-skinned people who live around the Sunken Caldera. They have
+                    heat-resistant skin and excellent night vision. Height: 1.4–1.7m.
+                    Lifespan: ~80 years. Known for their metalworking and geomancy.
+                </div>
+            </li>
+            <li>
+                <span class="entry-name">The Dustcallers</span>
+                <div class="entry-desc">
+                    Nomadic mystics who wander the Ashfall Marches. They communicate with
+                    the aether-dust and can "read" the patterns of falling particles to
+                    predict weather, danger, and events. Height: 1.5–1.8m. Lifespan: unknown.
+                </div>
+            </li>
+            <li>
+                <span class="entry-name">The Veil-Wraiths</span>
+                <div class="entry-desc">
+                    Half-corporeal entities that exist on the edge of the Veilscar. Neither
+                    fully alive nor dead, they are drawn to strong aetheric disturbances.
+                    They cannot be touched, but can be heard whispering in Velskar.
+                </div>
+            </li>
+        </ul>
+
+        <h3>Notable Creatures</h3>
+        <ul class="entry-list">
+            <li>
+                <span class="entry-name">Aether-Moth</span>
+                <div class="entry-desc">
+                    Large, translucent-winged moth that feeds on concentrated aether. Its
+                    wings glow faintly at night. They are considered good luck by the Renn.
+                </div>
+            </li>
+            <li>
+                <span class="entry-name">Korath (Veil-Hound)</span>
+                <div class="entry-desc">
+                    Wolf-like predator with six legs and a hide that shifts between solid
+                    and vapor. They hunt in the Veilscar and along its edges. Extremely dangerous.
+                </div>
+            </li>
+            <li>
+                <span class="entry-name">Elder Mycelium</span>
+                <div class="entry-desc">
+                    A massive underground fungal network that spans the entire continent.
+                    Some believe it is sentient. The Calderan use its fibers for building
+                    and its spores for medicine.
+                </div>
+            </li>
+        </ul>
+    </section>
+
+    <!-- ============================================================
+    HISTORY SECTION
+    ============================================================ -->
+    <section id="history" class="section">
+        <h2>History of Ætherfall</h2>
+        <p>
+            The timeline below covers the major eras of Ætherfall's history.
+            <em>Edit freely to match your world's story.</em>
+        </p>
+
+        <h3>Timeline of the Shattered Realm</h3>
+        <ul class="timeline">
+            <li>
+                <span class="era-date">Pre-0 AV</span> —
+                <span class="era-name">The Age of Wholeness</span>
+                <div class="era-desc">
+                    Ætherfall was one unified world. The Veil between reality and the
+                    aether was intact. No records survive from this age.
+                </div>
+            </li>
+            <li>
+                <span class="era-date">0 AV</span> —
+                <span class="era-name">The Shattering</span>
+                <div class="era-desc">
+                    A cataclysmic event tore the Veil open, creating the Veilscar. The
+                    aether flooded into the physical world, reshaping continents and
+                    awakening the first Renn. This event marks year zero of the
+                    Ætherfall calendar (AV = "After Veil").
+                </div>
+            </li>
+            <li>
+                <span class="era-date">1–50 AV</span> —
+                <span class="era-name">The Age of Ashes</span>
+                <div class="era-desc">
+                    The world was covered in aether-dust fallout. Survivors banded
+                    together in small communities. The first Dustcallers appeared,
+                    learning to read the dust-patterns.
+                </div>
+            </li>
+            <li>
+                <span class="era-date">51–200 AV</span> —
+                <span class="era-name">The Calderan Emergence</span>
+                <div class="era-desc">
+                    The Calderan people emerged from the Sunken Caldera, having adapted
+                    to life in the warm, bioluminescent environment. Trade routes opened
+                    between the Marches and the Caldera.
+                </div>
+            </li>
+            <li>
+                <span class="era-date">201–350 AV</span> —
+                <span class="era-name">The Veil Wars</span>
+                <div class="era-desc">
+                    Three major conflicts fought over control of the Veilscar and its
+                    aether-rich territories. The Renn and Calderan fought alongside each
+                    other against the Veil-Wraiths. The wars ended in an uneasy truce.
+                </div>
+            </li>
+            <li>
+                <span class="era-date">351–500 AV</span> —
+                <span class="era-name">The Quiet Centuries</span>
+                <div class="era-desc">
+                    A period of relative peace and rebuilding. The Elder Mycelium was
+                    discovered and cultivated. Written records become more reliable.
+                </div>
+            </li>
+            <li>
+                <span class="era-date">501–600 AV</span> —
+                <span class="era-name">The Pale Migration</span>
+                <div class="era-desc">
+                    Large numbers of Renn migrated to the Pale Coast, seeking new
+                    resources and fleeing growing instability in the Marches. Coastal
+                    settlements flourished.
+                </div>
+            </li>
+            <li>
+                <span class="era-date">601 AV–Present</span> —
+                <span class="era-name">The Current Age</span>
+                <div class="era-desc">
+                    The world is fragmented but stable. The Veilscar continues to
+                    expand slowly. New aetheric phenomena are emerging. The Dustcallers
+                    speak of a coming "Second Shattering."
+                </div>
+            </li>
+        </ul>
+    </section>
+
+    <!-- ============================================================
+    FOOTER
+    ============================================================ -->
+    <footer class="site-footer">
+        <p>
+            Ætherfall Codex — maintained manually via GitHub.<br>
+            <span style="font-size:0.85rem;">
+                Hosted on GitHub Pages · Edit the HTML file to update this site ·
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </span>
+        </p>
+    </footer>
+
+    <!-- ============================================================
+    NOTE: This entire site is contained in one HTML file.
+    To edit any section, scroll to the relevant <section> tag
+    and change the text directly.
+    ============================================================ -->
+
+</body>
+</html>
