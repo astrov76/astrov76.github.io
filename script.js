@@ -69,7 +69,7 @@ function filterAndRender(videos, category, searchTerm) {
         
         // Extract YouTube video ID from URL
         const videoId = getYouTubeId(video.youtubeUrl);
-        const embedUrl = `https://www.youtube.com/embed/${videoId}`;
+        const embedUrl = video.youtubeUrl;
         
         card.innerHTML = `
             <div class="video-wrapper">
