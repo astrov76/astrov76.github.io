@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UniGroup Notebook — Student Hub</title>
+    <title>СПбПУ Группа — Общий блокнот</title>
     <style>
         /* ============ CSS VARIABLES & THEMING ============ */
         :root {
@@ -283,6 +283,7 @@
             padding: 24px;
             border: 1px solid var(--border);
             transition: all var(--transition);
+            margin-bottom: 20px;
         }
 
         .card:hover {
@@ -348,282 +349,40 @@
             color: var(--text-secondary);
         }
 
-        .stat-icon.blue {
-            background: #dbeafe;
-        }
-        .stat-icon.green {
-            background: #d1fae5;
-        }
-        .stat-icon.orange {
-            background: #fed7aa;
-        }
-        .stat-icon.red {
-            background: #fee2e2;
-        }
-        [data-theme="dark"] .stat-icon.blue {
-            background: #1e3a5f;
-        }
-        [data-theme="dark"] .stat-icon.green {
-            background: #064e3b;
-        }
-        [data-theme="dark"] .stat-icon.orange {
-            background: #7c2d12;
-        }
-        [data-theme="dark"] .stat-icon.red {
-            background: #7f1d1d;
-        }
+        .stat-icon.blue { background: #dbeafe; }
+        .stat-icon.green { background: #d1fae5; }
+        .stat-icon.orange { background: #fed7aa; }
+        .stat-icon.red { background: #fee2e2; }
+        [data-theme="dark"] .stat-icon.blue { background: #1e3a5f; }
+        [data-theme="dark"] .stat-icon.green { background: #064e3b; }
+        [data-theme="dark"] .stat-icon.orange { background: #7c2d12; }
+        [data-theme="dark"] .stat-icon.red { background: #7f1d1d; }
 
-        /* ============ NOTES ============ */
-        .note-form {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-bottom: 20px;
-        }
-
-        .note-form input,
-        .note-form textarea,
-        .note-form select {
-            padding: 12px 14px;
-            border-radius: var(--radius-sm);
-            border: 1px solid var(--border);
-            background: var(--bg);
-            color: var(--text);
-            font-size: 14px;
-            font-family: inherit;
-            transition: border var(--transition);
-            outline: none;
-        }
-
-        .note-form input:focus,
-        .note-form textarea:focus,
-        .note-form select:focus {
-            border-color: var(--accent);
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
-        }
-
-        .note-form textarea {
-            resize: vertical;
-            min-height: 80px;
-        }
-
-        .btn {
-            padding: 12px 20px;
-            border-radius: var(--radius-sm);
-            border: none;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 600;
-            transition: all var(--transition);
-            font-family: inherit;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .btn-primary {
-            background: var(--accent);
-            color: #fff;
-        }
-        .btn-primary:hover {
-            background: var(--accent-hover);
-            transform: translateY(-1px);
-            box-shadow: 0 4px 14px rgba(59, 130, 246, 0.4);
-        }
-
-        .btn-danger {
-            background: var(--danger);
-            color: #fff;
-        }
-        .btn-danger:hover {
-            background: #dc2626;
-            transform: translateY(-1px);
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 1px solid var(--border);
-            color: var(--text);
-        }
-        .btn-outline:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-        }
-
-        .btn-sm {
-            padding: 6px 12px;
-            font-size: 12px;
-            border-radius: 6px;
-        }
-
-        .notes-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 16px;
-        }
-
-        .note-item {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-sm);
-            padding: 16px;
-            transition: all var(--transition);
-            position: relative;
-        }
-
-        .note-item:hover {
-            box-shadow: var(--shadow);
-            transform: translateY(-2px);
-        }
-
-        .note-item .note-tag {
-            display: inline-block;
-            padding: 3px 10px;
-            border-radius: 50px;
-            font-size: 11px;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .tag-lecture {
-            background: #dbeafe;
-            color: #1e40af;
-        }
-        .tag-assignment {
-            background: #fed7aa;
-            color: #9a3412;
-        }
-        .tag-exam {
-            background: #fee2e2;
-            color: #991b1b;
-        }
-        .tag-other {
-            background: #e2e8f0;
-            color: #475569;
-        }
-        [data-theme="dark"] .tag-lecture {
-            background: #1e3a5f;
-            color: #93c5fd;
-        }
-        [data-theme="dark"] .tag-assignment {
-            background: #7c2d12;
-            color: #fdba74;
-        }
-        [data-theme="dark"] .tag-exam {
-            background: #7f1d1d;
-            color: #fca5a5;
-        }
-        [data-theme="dark"] .tag-other {
-            background: #334155;
-            color: #cbd5e1;
-        }
-
-        .note-item h4 {
-            font-size: 15px;
-            font-weight: 600;
-            margin-bottom: 6px;
-            color: var(--text);
-        }
-
-        .note-item p {
-            font-size: 13px;
-            color: var(--text-secondary);
-            margin-bottom: 10px;
-        }
-
-        .note-item .note-date {
-            font-size: 11px;
-            color: var(--text-secondary);
-            opacity: 0.7;
-        }
-
-        .note-item .note-actions {
-            display: flex;
-            gap: 6px;
-            margin-top: 10px;
-        }
-
-        /* ============ DEADLINES ============ */
-        .deadline-form {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .deadline-form input,
-        .deadline-form select {
-            padding: 12px 14px;
-            border-radius: var(--radius-sm);
-            border: 1px solid var(--border);
-            background: var(--bg);
-            color: var(--text);
-            font-size: 14px;
-            font-family: inherit;
-            outline: none;
-            flex: 1;
-            min-width: 140px;
-        }
-
-        .deadline-form input:focus,
-        .deadline-form select:focus {
-            border-color: var(--accent);
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
-        }
-
-        .deadlines-list {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .deadline-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+        /* ============ NOTICE BOARD / DEADLINES (STATIC) ============ */
+        .notice-item, .deadline-static-item {
             padding: 16px 20px;
             background: var(--card-bg);
             border: 1px solid var(--border);
             border-radius: var(--radius-sm);
+            margin-bottom: 10px;
             transition: all var(--transition);
-            flex-wrap: wrap;
-            gap: 10px;
         }
-
-        .deadline-item:hover {
+        .notice-item:hover, .deadline-static-item:hover {
             box-shadow: var(--shadow);
         }
-
-        .deadline-info h4 {
+        .notice-item h4, .deadline-static-item h4 {
             font-size: 15px;
             font-weight: 600;
             color: var(--text);
+            margin-bottom: 4px;
         }
-
-        .deadline-info p {
+        .notice-item p, .deadline-static-item p {
             font-size: 13px;
             color: var(--text-secondary);
         }
-
-        .countdown-badge {
-            padding: 6px 14px;
-            border-radius: 50px;
-            font-size: 13px;
+        .deadline-static-item .deadline-date {
             font-weight: 600;
-            white-space: nowrap;
-        }
-
-        .countdown-urgent {
-            background: var(--danger-bg);
-            color: var(--danger);
-        }
-        .countdown-warning {
-            background: var(--warning-bg);
-            color: var(--warning);
-        }
-        .countdown-ok {
-            background: var(--success-bg);
-            color: var(--success);
+            color: var(--accent);
         }
 
         /* ============ MAPS ============ */
@@ -632,6 +391,7 @@
             overflow: hidden;
             border: 1px solid var(--border);
             box-shadow: var(--shadow);
+            margin-bottom: 16px;
         }
 
         .map-container iframe {
@@ -645,7 +405,6 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 12px;
-            margin-top: 16px;
         }
 
         .map-location-card {
@@ -664,54 +423,30 @@
             transform: translateY(-2px);
         }
 
-        .map-location-card .loc-icon {
-            font-size: 28px;
-            margin-bottom: 8px;
-        }
-
-        .map-location-card h4 {
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--text);
-        }
-
-        .map-location-card p {
-            font-size: 12px;
-            color: var(--text-secondary);
-        }
+        .map-location-card .loc-icon { font-size: 28px; margin-bottom: 8px; }
+        .map-location-card h4 { font-size: 13px; font-weight: 600; color: var(--text); }
+        .map-location-card p { font-size: 12px; color: var(--text-secondary); }
 
         /* ============ TIMETABLE ============ */
-        .timetable-wrapper {
-            overflow-x: auto;
-        }
-
-        .timetable {
-            width: 100%;
-            border-collapse: collapse;
-            min-width: 700px;
-        }
-
-        .timetable th,
-        .timetable td {
+        .timetable-wrapper { overflow-x: auto; }
+        .timetable { width: 100%; border-collapse: collapse; min-width: 700px; }
+        .timetable th, .timetable td {
             padding: 12px 16px;
             text-align: left;
             border: 1px solid var(--border);
             font-size: 13px;
         }
-
         .timetable th {
             background: var(--sidebar-bg);
             color: #fff;
             font-weight: 600;
             text-align: center;
         }
-
         .timetable td {
             background: var(--card-bg);
             color: var(--text);
             text-align: center;
         }
-
         .timetable td.subject-cell {
             background: #eff6ff;
             font-weight: 500;
@@ -721,7 +456,6 @@
             background: #1e3a5f;
             color: #93c5fd;
         }
-
         .timetable td.break-cell {
             background: #fefce8;
             color: #854d0e;
@@ -738,7 +472,6 @@
             grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
             gap: 16px;
         }
-
         .member-card {
             background: var(--card-bg);
             border: 1px solid var(--border);
@@ -747,12 +480,10 @@
             text-align: center;
             transition: all var(--transition);
         }
-
         .member-card:hover {
             box-shadow: var(--shadow);
             transform: translateY(-2px);
         }
-
         .member-avatar {
             width: 64px;
             height: 64px;
@@ -766,20 +497,10 @@
             font-weight: 700;
             margin: 0 auto 12px;
         }
+        .member-card h4 { font-size: 15px; font-weight: 600; color: var(--text); }
+        .member-card p { font-size: 12px; color: var(--text-secondary); margin-top: 4px; }
 
-        .member-card h4 {
-            font-size: 15px;
-            font-weight: 600;
-            color: var(--text);
-        }
-
-        .member-card p {
-            font-size: 12px;
-            color: var(--text-secondary);
-            margin-top: 4px;
-        }
-
-        /* ============ TOAST ============ */
+        /* ============ TOAST (only for map focus feedback) ============ */
         .toast-container {
             position: fixed;
             bottom: 24px;
@@ -789,7 +510,6 @@
             flex-direction: column;
             gap: 8px;
         }
-
         .toast {
             background: var(--card-bg);
             border: 1px solid var(--border);
@@ -804,23 +524,10 @@
             align-items: center;
             gap: 10px;
         }
-
-        .toast.success {
-            border-left: 4px solid var(--success);
-        }
-        .toast.error {
-            border-left: 4px solid var(--danger);
-        }
-
+        .toast.success { border-left: 4px solid var(--success); }
         @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateX(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+            from { opacity: 0; transform: translateX(40px); }
+            to { opacity: 1; transform: translateX(0); }
         }
 
         /* ============ EMPTY STATE ============ */
@@ -829,90 +536,51 @@
             padding: 40px 20px;
             color: var(--text-secondary);
         }
-
-        .empty-state .empty-icon {
-            font-size: 48px;
-            margin-bottom: 12px;
-        }
-
-        .empty-state h4 {
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--text);
-            margin-bottom: 4px;
-        }
+        .empty-state .empty-icon { font-size: 48px; margin-bottom: 12px; }
+        .empty-state h4 { font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
 
         /* ============ RESPONSIVE ============ */
         @media (max-width: 900px) {
-            .sidebar {
-                transform: translateX(-100%);
-            }
-            .sidebar.open {
-                transform: translateX(0);
-            }
-            .hamburger {
-                display: block;
-            }
-            .overlay {
-                display: block;
-                pointer-events: none;
-            }
-            .overlay.show {
-                pointer-events: all;
-            }
-            .main-content {
-                margin-left: 0;
-                padding: 20px 16px;
-                padding-top: 70px;
-            }
-            .top-bar .page-title {
-                font-size: 22px;
-            }
+            .sidebar { transform: translateX(-100%); }
+            .sidebar.open { transform: translateX(0); }
+            .hamburger { display: block; }
+            .overlay { display: block; pointer-events: none; }
+            .overlay.show { pointer-events: all; }
+            .main-content { margin-left: 0; padding: 20px 16px; padding-top: 70px; }
+            .top-bar .page-title { font-size: 22px; }
         }
 
         @media (max-width: 600px) {
-            .grid-2,
-            .grid-3 {
-                grid-template-columns: 1fr;
-            }
-            .deadline-form {
-                flex-direction: column;
-            }
-            .note-form {
-                gap: 8px;
-            }
-            .main-content {
-                padding: 16px 12px;
-                padding-top: 70px;
-            }
+            .grid-2, .grid-3 { grid-template-columns: 1fr; }
+            .main-content { padding: 16px 12px; padding-top: 70px; }
         }
     </style>
 </head>
 <body>
 
     <!-- ============ HAMBURGER (Mobile) ============ -->
-    <button class="hamburger" id="hamburgerBtn" aria-label="Toggle sidebar">☰</button>
+    <button class="hamburger" id="hamburgerBtn" aria-label="Открыть меню">☰</button>
     <div class="overlay" id="overlay"></div>
 
     <!-- ============ SIDEBAR ============ -->
     <nav class="sidebar" id="sidebar">
         <div class="sidebar-brand">
-            <div class="logo">📚</div>
+            <div class="logo">🎓</div>
             <div>
-                <h1>UniGroup<br><span class="subtitle">Student Notebook</span></h1>
+                <h1>СПбПУ Группа<br><span class="subtitle">Общий блокнот</span></h1>
             </div>
         </div>
         <ul class="nav-links">
-            <li><a href="#dashboard" class="active" data-section="dashboard"><span class="icon">🏠</span> Dashboard</a></li>
-            <li><a href="#notes" data-section="notes"><span class="icon">📝</span> Notes</a></li>
-            <li><a href="#deadlines" data-section="deadlines"><span class="icon">⏰</span> Deadlines</a></li>
-            <li><a href="#maps" data-section="maps"><span class="icon">🗺️</span> Maps</a></li>
-            <li><a href="#timetable" data-section="timetable"><span class="icon">📅</span> Timetable</a></li>
-            <li><a href="#members" data-section="members"><span class="icon">👥</span> Members</a></li>
+            <li><a href="#dashboard" class="active" data-section="dashboard"><span class="icon">🏠</span> Главная</a></li>
+            <li><a href="#notices" data-section="notices"><span class="icon">📌</span> Доска объявлений</a></li>
+            <li><a href="#deadlines-static" data-section="deadlines-static"><span class="icon">⏰</span> Дедлайны</a></li>
+            <li><a href="#maps" data-section="maps"><span class="icon">🗺️</span> Карта</a></li>
+            <li><a href="#timetable" data-section="timetable"><span class="icon">📅</span> Расписание</a></li>
+            <li><a href="#members" data-section="members"><span class="icon">👥</span> Участники</a></li>
         </ul>
         <div class="sidebar-footer">
-            <p>© 2025 UniGroup Notebook</p>
-            <p>Made with ❤️ for students</p>
+            <p>© 2025 СПбПУ Группа</p>
+            <p>Сделано с ❤️ для студентов</p>
         </div>
     </nav>
 
@@ -922,595 +590,350 @@
         <!-- Top Bar -->
         <div class="top-bar">
             <div>
-                <h2 class="page-title" id="pageTitle">Dashboard</h2>
-                <p class="page-subtitle" id="pageSubtitle">Welcome back, group!</p>
+                <h2 class="page-title" id="pageTitle">Главная</h2>
+                <p class="page-subtitle" id="pageSubtitle">Добро пожаловать!</p>
             </div>
-            <button class="theme-toggle" id="themeToggle" title="Toggle dark mode">🌙</button>
+            <button class="theme-toggle" id="themeToggle" title="Переключить тему">🌙</button>
         </div>
 
         <!-- ============ DASHBOARD SECTION ============ -->
         <div class="section active" id="section-dashboard">
             <div class="grid-3">
                 <div class="stat-card">
-                    <div class="stat-icon blue">📝</div>
+                    <div class="stat-icon blue">📌</div>
                     <div class="stat-info">
-                        <h4 id="statNotes">0</h4>
-                        <p>Total Notes</p>
+                        <h4>3</h4>
+                        <p>Объявления</p>
                     </div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-icon orange">⏰</div>
                     <div class="stat-info">
-                        <h4 id="statDeadlines">0</h4>
-                        <p>Active Deadlines</p>
+                        <h4>4</h4>
+                        <p>Ближайших дедлайна</p>
                     </div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-icon green">👥</div>
                     <div class="stat-info">
-                        <h4 id="statMembers">0</h4>
-                        <p>Group Members</p>
+                        <h4>5</h4>
+                        <p>Участников</p>
                     </div>
                 </div>
             </div>
 
             <div class="grid-2">
                 <div class="card">
-                    <h3>📌 Quick Overview</h3>
-                    <p style="color:var(--text-secondary); font-size:14px; margin-bottom:12px;">
-                        Your group's shared workspace for notes, deadlines, and campus navigation.
+                    <h3>📌 Общая информация</h3>
+                    <p style="color:var(--text-secondary); font-size:14px;">
+                        Это общий блокнот для вашей группы в СПбПУ. Здесь вы найдёте актуальные объявления, сроки сдачи работ и полезные карты кампуса.
                     </p>
-                    <div style="display:flex; gap:8px; flex-wrap:wrap;">
-                        <button class="btn btn-primary btn-sm" onclick="navigateTo('notes')">📝 Add Note</button>
-                        <button class="btn btn-outline btn-sm" onclick="navigateTo('deadlines')">⏰ Add Deadline</button>
-                        <button class="btn btn-outline btn-sm" onclick="navigateTo('maps')">🗺️ View Maps</button>
-                    </div>
                 </div>
                 <div class="card">
-                    <h3>⚡ Upcoming Deadlines</h3>
-                    <div id="dashboardUpcoming">
-                        <div class="empty-state">
-                            <div class="empty-icon">📭</div>
-                            <h4>No deadlines yet</h4>
-                            <p style="font-size:13px;">Add a deadline to see it here!</p>
-                        </div>
-                    </div>
+                    <h3>⚡ Ближайшие дедлайны</h3>
+                    <ul style="list-style:none; padding:0;">
+                        <li style="padding:8px 0; border-bottom:1px solid var(--border);">📘 Курсовая работа — <strong>15 мая</strong></li>
+                        <li style="padding:8px 0; border-bottom:1px solid var(--border);">📝 Отчёт по лабораторной — <strong>22 мая</strong></li>
+                        <li style="padding:8px 0;">📊 Презентация проекта — <strong>30 мая</strong></li>
+                    </ul>
                 </div>
             </div>
         </div>
 
-        <!-- ============ NOTES SECTION ============ -->
-        <div class="section" id="section-notes">
-            <div class="card" style="margin-bottom:20px;">
-                <h3>📝 Add New Note</h3>
-                <div class="note-form">
-                    <input type="text" id="noteTitle" placeholder="Note title..." maxlength="80">
-                    <textarea id="noteContent" placeholder="Write your note here..." rows="3"></textarea>
-                    <div style="display:flex; gap:10px; flex-wrap:wrap;">
-                        <select id="noteTag" style="flex:1; min-width:140px;">
-                            <option value="lecture">📖 Lecture</option>
-                            <option value="assignment">📋 Assignment</option>
-                            <option value="exam">📝 Exam</option>
-                            <option value="other">📎 Other</option>
-                        </select>
-                        <button class="btn btn-primary" onclick="addNote()">Add Note</button>
-                    </div>
+        <!-- ============ NOTICES (STATIC BOARD) ============ -->
+        <div class="section" id="section-notices">
+            <div class="card">
+                <h3>📌 Доска объявлений</h3>
+                <p style="color:var(--text-secondary); font-size:13px; margin-bottom:16px;">
+                    Актуальная информация для группы. Редактируется вручную в файле <code>index.html</code>.
+                </p>
+                <div class="notice-item">
+                    <h4>📢 Перенос занятия</h4>
+                    <p>Лекция по математике переносится с 12 мая на 14 мая, аудитория 301.</p>
                 </div>
-            </div>
-            <div class="notes-list" id="notesList">
-                <!-- Notes will be rendered here -->
+                <div class="notice-item">
+                    <h4>📚 Регистрация на конференцию</h4>
+                    <p>До 20 мая необходимо зарегистрироваться на студенческую конференцию СПбПУ.</p>
+                </div>
+                <div class="notice-item">
+                    <h4>🏆 Хакатон</h4>
+                    <p>25–26 мая пройдёт хакатон в главном корпусе. Участие бесплатное, регистрация открыта.</p>
+                </div>
             </div>
         </div>
 
-        <!-- ============ DEADLINES SECTION ============ -->
-        <div class="section" id="section-deadlines">
-            <div class="card" style="margin-bottom:20px;">
-                <h3>⏰ Add New Deadline</h3>
-                <div class="deadline-form">
-                    <input type="text" id="deadlineTitle" placeholder="Deadline title..." maxlength="60">
-                    <input type="date" id="deadlineDate">
-                    <select id="deadlinePriority">
-                        <option value="normal">🟢 Normal</option>
-                        <option value="urgent">🔴 Urgent</option>
-                        <option value="warning">🟡 Warning</option>
-                    </select>
-                    <button class="btn btn-primary" onclick="addDeadline()">Add</button>
+        <!-- ============ DEADLINES (STATIC) ============ -->
+        <div class="section" id="section-deadlines-static">
+            <div class="card">
+                <h3>⏰ Дедлайны</h3>
+                <p style="color:var(--text-secondary); font-size:13px; margin-bottom:16px;">
+                    Сроки сдачи работ. Обновляется вручную.
+                </p>
+                <div class="deadline-static-item">
+                    <h4>📘 Курсовая работа по физике</h4>
+                    <p>Дедлайн: <span class="deadline-date">15 мая 2025 г.</span></p>
                 </div>
-            </div>
-            <div class="deadlines-list" id="deadlinesList">
-                <!-- Deadlines will be rendered here -->
+                <div class="deadline-static-item">
+                    <h4>📝 Отчёт по лабораторной работе №3</h4>
+                    <p>Дедлайн: <span class="deadline-date">22 мая 2025 г.</span></p>
+                </div>
+                <div class="deadline-static-item">
+                    <h4>📊 Презентация по проекту</h4>
+                    <p>Дедлайн: <span class="deadline-date">30 мая 2025 г.</span></p>
+                </div>
+                <div class="deadline-static-item">
+                    <h4>📚 Реферат по истории</h4>
+                    <p>Дедлайн: <span class="deadline-date">5 июня 2025 г.</span></p>
+                </div>
             </div>
         </div>
 
         <!-- ============ MAPS SECTION ============ -->
         <div class="section" id="section-maps">
-            <div class="card" style="margin-bottom:20px;">
-                <h3>🗺️ Campus Map</h3>
+            <div class="card">
+                <h3>🗺️ Карта кампуса СПбПУ</h3>
                 <p style="color:var(--text-secondary); font-size:13px; margin-bottom:16px;">
-                    Key locations around campus. Click a location card to focus the map.
+                    Ключевые места кампуса. Нажмите на карточку, чтобы показать на карте.
                 </p>
                 <div class="map-container">
                     <iframe
-                    id="mapFrame"
-                    src="https://www.google.com/maps?q=University%20Campus&output=embed"
-                    loading="lazy"
-                    allowfullscreen
-                    title="Campus Map">
-                </iframe>
-            </div>
-            <div class="map-locations">
-                <div class="map-location-card" onclick="focusMap('Main Library')">
-                    <div class="loc-icon">📚</div>
-                    <h4>Main Library</h4>
-                    <p>Open 8am–11pm</p>
+                        id="mapFrame"
+                        src="https://www.google.com/maps?q=СПбПУ%20Петра%20Великого&output=embed"
+                        loading="lazy"
+                        allowfullscreen
+                        title="Карта кампуса">
+                    </iframe>
                 </div>
-                <div class="map-location-card" onclick="focusMap('Student Center')">
-                    <div class="loc-icon">🏛️</div>
-                    <h4>Student Center</h4>
-                    <p>Food & Lounge</p>
+                <div class="map-locations">
+                    <div class="map-location-card" onclick="focusMap('Главный корпус СПбПУ')">
+                        <div class="loc-icon">🏛️</div>
+                        <h4>Главный корпус</h4>
+                        <p>Администрация</p>
+                    </div>
+                    <div class="map-location-card" onclick="focusMap('Фундаментальная библиотека СПбПУ')">
+                        <div class="loc-icon">📚</div>
+                        <h4>Библиотека</h4>
+                        <p>Открыта 8:00–22:00</p>
+                    </div>
+                    <div class="map-location-card" onclick="focusMap('1-й учебный корпус СПбПУ')">
+                        <div class="loc-icon">🏫</div>
+                        <h4>1-й учебный корпус</h4>
+                        <p>Лекционные аудитории</p>
+                    </div>
+                    <div class="map-location-card" onclick="focusMap('Студенческий клуб СПбПУ')">
+                        <div class="loc-icon">🎭</div>
+                        <h4>Студенческий клуб</h4>
+                        <p>Мероприятия</p>
+                    </div>
+                    <div class="map-location-card" onclick="focusMap('Спортивный комплекс СПбПУ')">
+                        <div class="loc-icon">🏟️</div>
+                        <h4>Спорткомплекс</h4>
+                        <p>Бассейн и залы</p>
+                    </div>
                 </div>
-                <div class="map-location-card" onclick="focusMap('Science Building')">
-                    <div class="loc-icon">🔬</div>
-                    <h4>Science Building</h4>
-                    <p>Labs & Lectures</p>
-                </div>
-                <div class="map-location-card" onclick="focusMap('Sports Complex')">
-                    <div class="loc-icon">🏟️</div>
-                    <h4>Sports Complex</h4>
-                    <p>Gym & Courts</p>
-                </div>
-                <div class="map-location-card" onclick="focusMap('Cafeteria')">
-                    <div class="loc-icon">🍽️</div>
-                    <h4>Cafeteria</h4>
-                    <p>7am–7pm</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ============ TIMETABLE SECTION ============ -->
-    <div class="section" id="section-timetable">
-        <div class="card">
-            <h3>📅 Weekly Timetable</h3>
-            <p style="color:var(--text-secondary); font-size:13px; margin-bottom:16px;">
-                Standard weekly schedule. Subject to change.
-            </p>
-            <div class="timetable-wrapper">
-                <table class="timetable">
-                    <thead>
-                        <tr>
-                            <th>Time</th>
-                            <th>Monday</th>
-                            <th>Tuesday</th>
-                            <th>Wednesday</th>
-                            <th>Thursday</th>
-                            <th>Friday</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>9:00 – 10:30</strong></td>
-                            <td class="subject-cell">Mathematics</td>
-                            <td class="subject-cell">Physics</td>
-                            <td class="subject-cell">Chemistry</td>
-                            <td class="subject-cell">Biology</td>
-                            <td class="subject-cell">Computer Sci</td>
-                        </tr>
-                        <tr>
-                            <td><strong>10:30 – 11:00</strong></td>
-                            <td class="break-cell" colspan="5">☕ Break</td>
-                        </tr>
-                        <tr>
-                            <td><strong>11:00 – 12:30</strong></td>
-                            <td class="subject-cell">Physics Lab</td>
-                            <td class="subject-cell">Math Tutorial</td>
-                            <td class="subject-cell">Chem Lab</td>
-                            <td class="subject-cell">CS Lab</td>
-                            <td class="subject-cell">Free Study</td>
-                        </tr>
-                        <tr>
-                            <td><strong>12:30 – 13:30</strong></td>
-                            <td class="break-cell" colspan="5">🍽️ Lunch Break</td>
-                        </tr>
-                        <tr>
-                            <td><strong>13:30 – 15:00</strong></td>
-                            <td class="subject-cell">English</td>
-                            <td class="subject-cell">Statistics</td>
-                            <td class="subject-cell">Elective</td>
-                            <td class="subject-cell">Group Project</td>
-                            <td class="subject-cell">Seminar</td>
-                        </tr>
-                    </tbody>
-                </table>
             </div>
         </div>
-    </div>
 
-    <!-- ============ MEMBERS SECTION ============ -->
-    <div class="section" id="section-members">
-        <div class="card" style="margin-bottom:20px;">
-            <h3>👥 Group Members</h3>
-            <p style="color:var(--text-secondary); font-size:13px;">
-                Your study group. Add or remove members as needed.
-            </p>
-        </div>
-        <div class="members-grid" id="membersList">
-            <!-- Members will be rendered here -->
-        </div>
-    </div>
-
-</main>
-
-<!-- ============ TOAST CONTAINER ============ -->
-<div class="toast-container" id="toastContainer"></div>
-
-<script>
-    // ============ DATA STORE ============
-    const defaultMembers = [
-        { name: 'Alice Johnson', role: 'Group Leader', avatar: 'AJ' },
-        { name: 'Ben Carter', role: 'Note Taker', avatar: 'BC' },
-        { name: 'Clara Smith', role: 'Researcher', avatar: 'CS' },
-        { name: 'David Kim', role: 'Presenter', avatar: 'DK' },
-        { name: 'Emma Wilson', role: 'Coordinator', avatar: 'EW' },
-    ];
-
-    function getData(key, fallback) {
-        try {
-            const data = localStorage.getItem(key);
-            return data ? JSON.parse(data) : fallback;
-        } catch {
-            return fallback;
-        }
-    }
-
-    function setData(key, value) {
-        localStorage.setItem(key, JSON.stringify(value));
-    }
-
-    let notes = getData('ug_notes', []);
-    let deadlines = getData('ug_deadlines', []);
-    let members = getData('ug_members', defaultMembers);
-
-    // ============ THEME ============
-    const themeToggle = document.getElementById('themeToggle');
-    const savedTheme = localStorage.getItem('ug_theme') || 'light';
-    document.documentElement.setAttribute('data-theme', savedTheme);
-    themeToggle.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
-
-    themeToggle.addEventListener('click', () => {
-        const current = document.documentElement.getAttribute('data-theme');
-        const next = current === 'dark' ? 'light' : 'dark';
-        document.documentElement.setAttribute('data-theme', next);
-        localStorage.setItem('ug_theme', next);
-        themeToggle.textContent = next === 'dark' ? '☀️' : '🌙';
-    });
-
-    // ============ NAVIGATION ============
-    const sectionNames = {
-        dashboard: { title: 'Dashboard', subtitle: 'Welcome back, group!' },
-        notes: { title: 'Notes', subtitle: 'Your shared notebook' },
-        deadlines: { title: 'Deadlines', subtitle: 'Track upcoming due dates' },
-        maps: { title: 'Maps', subtitle: 'Navigate around campus' },
-        timetable: { title: 'Timetable', subtitle: 'Weekly schedule' },
-        members: { title: 'Members', subtitle: 'Your study group' },
-    };
-
-    function navigateTo(sectionId) {
-        // Update sidebar active state
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.classList.toggle('active', link.dataset.section === sectionId);
-        });
-        // Update sections
-        document.querySelectorAll('.section').forEach(sec => {
-            sec.classList.remove('active');
-        });
-        const targetSection = document.getElementById(`section-${sectionId}`);
-        if (targetSection) targetSection.classList.add('active');
-        // Update page title
-        const info = sectionNames[sectionId] || { title: 'Dashboard', subtitle: '' };
-        document.getElementById('pageTitle').textContent = info.title;
-        document.getElementById('pageSubtitle').textContent = info.subtitle;
-        // Close mobile sidebar
-        closeSidebar();
-        // Refresh dashboard if needed
-        if (sectionId === 'dashboard') updateDashboard();
-    }
-
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const sectionId = link.dataset.section;
-            navigateTo(sectionId);
-        });
-    });
-
-    // ============ SIDEBAR (Mobile) ============
-    const sidebar = document.getElementById('sidebar');
-    const hamburgerBtn = document.getElementById('hamburgerBtn');
-    const overlay = document.getElementById('overlay');
-
-    function openSidebar() {
-        sidebar.classList.add('open');
-        overlay.classList.add('show');
-    }
-
-    function closeSidebar() {
-        sidebar.classList.remove('open');
-        overlay.classList.remove('show');
-    }
-
-    hamburgerBtn.addEventListener('click', () => {
-        if (sidebar.classList.contains('open')) {
-            closeSidebar();
-        } else {
-            openSidebar();
-        }
-    });
-
-    overlay.addEventListener('click', closeSidebar);
-
-    // ============ TOAST ============
-    function showToast(message, type = 'success') {
-        const container = document.getElementById('toastContainer');
-        const toast = document.createElement('div');
-        toast.className = `toast ${type}`;
-        toast.innerHTML = `${type === 'success' ? '✅' : '❌'} ${message}`;
-        container.appendChild(toast);
-        setTimeout(() => {
-            toast.style.opacity = '0';
-            toast.style.transition = 'opacity 0.3s ease';
-            setTimeout(() => toast.remove(), 300);
-        }, 2500);
-    }
-
-    // ============ NOTES ============
-    function renderNotes() {
-        const list = document.getElementById('notesList');
-        if (notes.length === 0) {
-            list.innerHTML = `
-                    <div class="empty-state" style="grid-column:1/-1;">
-                        <div class="empty-icon">📭</div>
-                        <h4>No notes yet</h4>
-                        <p style="font-size:13px;">Add your first note above!</p>
-                    </div>
-                `;
-            return;
-        }
-        list.innerHTML = notes.map((note, index) => `
-                <div class="note-item">
-                    <span class="note-tag tag-${note.tag || 'other'}">${getTagLabel(note.tag)}</span>
-                    <h4>${escapeHtml(note.title)}</h4>
-                    <p>${escapeHtml(note.content)}</p>
-                    <div class="note-date">📅 ${note.date}</div>
-                    <div class="note-actions">
-                        <button class="btn btn-danger btn-sm" onclick="deleteNote(${index})">🗑️ Delete</button>
-                    </div>
+        <!-- ============ TIMETABLE SECTION ============ -->
+        <div class="section" id="section-timetable">
+            <div class="card">
+                <h3>📅 Расписание (экспорт из РУЗ СПбПУ)</h3>
+                <p style="color:var(--text-secondary); font-size:13px; margin-bottom:16px;">
+                    Ниже представлено примерное расписание. Актуальную версию можно получить в <a href="https://ruz.spbstu.ru/" target="_blank" style="color:var(--accent);">РУЗ СПбПУ</a>.
+                </p>
+                <div class="timetable-wrapper">
+                    <table class="timetable">
+                        <thead>
+                            <tr>
+                                <th>Время</th>
+                                <th>Понедельник</th>
+                                <th>Вторник</th>
+                                <th>Среда</th>
+                                <th>Четверг</th>
+                                <th>Пятница</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>9:00 – 10:30</strong></td>
+                                <td class="subject-cell">Математика</td>
+                                <td class="subject-cell">Физика</td>
+                                <td class="subject-cell">Химия</td>
+                                <td class="subject-cell">Информатика</td>
+                                <td class="subject-cell">Английский</td>
+                            </tr>
+                            <tr>
+                                <td><strong>10:30 – 11:00</strong></td>
+                                <td class="break-cell" colspan="5">☕ Перерыв</td>
+                            </tr>
+                            <tr>
+                                <td><strong>11:00 – 12:30</strong></td>
+                                <td class="subject-cell">Физика (лаб.)</td>
+                                <td class="subject-cell">Математика (пр.)</td>
+                                <td class="subject-cell">Химия (лаб.)</td>
+                                <td class="subject-cell">Программирование</td>
+                                <td class="subject-cell">Самостоятельная работа</td>
+                            </tr>
+                            <tr>
+                                <td><strong>12:30 – 13:30</strong></td>
+                                <td class="break-cell" colspan="5">🍽️ Обед</td>
+                            </tr>
+                            <tr>
+                                <td><strong>13:30 – 15:00</strong></td>
+                                <td class="subject-cell">История</td>
+                                <td class="subject-cell">Статистика</td>
+                                <td class="subject-cell">Электив</td>
+                                <td class="subject-cell">Проектная работа</td>
+                                <td class="subject-cell">Семинар</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-            `).join('');
-        updateStats();
-    }
+            </div>
+        </div>
 
-    function getTagLabel(tag) {
-        const labels = { lecture: '📖 Lecture', assignment: '📋 Assignment', exam: '📝 Exam', other: '📎 Other' };
-        return labels[tag] || '📎 Other';
-    }
-
-    function addNote() {
-        const title = document.getElementById('noteTitle').value.trim();
-        const content = document.getElementById('noteContent').value.trim();
-        const tag = document.getElementById('noteTag').value;
-        if (!title || !content) {
-            showToast('Please fill in both title and content.', 'error');
-            return;
-        }
-        notes.push({
-            title,
-            content,
-            tag,
-            date: new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }),
-        });
-        setData('ug_notes', notes);
-        document.getElementById('noteTitle').value = '';
-        document.getElementById('noteContent').value = '';
-        renderNotes();
-        showToast('Note added successfully!');
-    }
-
-    function deleteNote(index) {
-        if (confirm('Delete this note?')) {
-            notes.splice(index, 1);
-            setData('ug_notes', notes);
-            renderNotes();
-            showToast('Note deleted.');
-        }
-    }
-
-    // ============ DEADLINES ============
-    function getDaysRemaining(dateStr) {
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
-        const target = new Date(dateStr);
-        target.setHours(0, 0, 0, 0);
-        const diff = Math.ceil((target - today) / (1000 * 60 * 60 * 24));
-        return diff;
-    }
-
-    function renderDeadlines() {
-        const list = document.getElementById('deadlinesList');
-        if (deadlines.length === 0) {
-            list.innerHTML = `
-                    <div class="empty-state">
-                        <div class="empty-icon">📭</div>
-                        <h4>No deadlines</h4>
-                        <p style="font-size:13px;">Add a deadline to stay on track!</p>
-                    </div>
-                `;
-            return;
-        }
-        // Sort by date ascending
-        const sorted = [...deadlines].sort((a, b) => new Date(a.date) - new Date(b.date));
-        list.innerHTML = sorted.map((d, i) => {
-            const originalIndex = deadlines.indexOf(d);
-            const days = getDaysRemaining(d.date);
-            let badgeClass = 'countdown-ok';
-            let badgeText = `${days} days left`;
-            if (days < 0) {
-                badgeClass = 'countdown-urgent';
-                badgeText = `Overdue by ${Math.abs(days)} days`;
-            } else if (days <= 3) {
-                badgeClass = 'countdown-urgent';
-                badgeText = `⚡ ${days} days left!`;
-            } else if (days <= 7) {
-                badgeClass = 'countdown-warning';
-                badgeText = `⏳ ${days} days left`;
-            } else {
-                badgeText = `✅ ${days} days left`;
-            }
-            const priorityIcon = d.priority === 'urgent' ? '🔴' : d.priority === 'warning' ? '🟡' : '🟢';
-            return `
-                    <div class="deadline-item">
-                        <div class="deadline-info">
-                            <h4>${priorityIcon} ${escapeHtml(d.title)}</h4>
-                            <p>📅 Due: ${d.date}</p>
-                        </div>
-                        <div style="display:flex; align-items:center; gap:10px;">
-                            <span class="countdown-badge ${badgeClass}">${badgeText}</span>
-                            <button class="btn btn-danger btn-sm" onclick="deleteDeadline(${originalIndex})">🗑️</button>
-                        </div>
-                    </div>
-                `;
-        }).join('');
-        updateStats();
-        updateDashboardUpcoming();
-    }
-
-    function addDeadline() {
-        const title = document.getElementById('deadlineTitle').value.trim();
-        const date = document.getElementById('deadlineDate').value;
-        const priority = document.getElementById('deadlinePriority').value;
-        if (!title || !date) {
-            showToast('Please enter a title and date.', 'error');
-            return;
-        }
-        deadlines.push({ title, date, priority });
-        setData('ug_deadlines', deadlines);
-        document.getElementById('deadlineTitle').value = '';
-        document.getElementById('deadlineDate').value = '';
-        renderDeadlines();
-        showToast('Deadline added!');
-    }
-
-    function deleteDeadline(index) {
-        if (confirm('Remove this deadline?')) {
-            deadlines.splice(index, 1);
-            setData('ug_deadlines', deadlines);
-            renderDeadlines();
-            showToast('Deadline removed.');
-        }
-    }
-
-    // ============ MAPS ============
-    function focusMap(location) {
-        const mapFrame = document.getElementById('mapFrame');
-        const encoded = encodeURIComponent(location + ' University Campus');
-        mapFrame.src = `https://www.google.com/maps?q=${encoded}&output=embed`;
-        showToast(`Showing: ${location}`);
-    }
-
-    // ============ MEMBERS ============
-    function renderMembers() {
-        const list = document.getElementById('membersList');
-        if (members.length === 0) {
-            list.innerHTML = `
-                    <div class="empty-state" style="grid-column:1/-1;">
-                        <div class="empty-icon">👥</div>
-                        <h4>No members</h4>
-                        <p style="font-size:13px;">Add group members to collaborate.</p>
-                    </div>
-                `;
-            return;
-        }
-        list.innerHTML = members.map((m, index) => `
+        <!-- ============ MEMBERS SECTION ============ -->
+        <div class="section" id="section-members">
+            <div class="card">
+                <h3>👥 Участники группы</h3>
+                <p style="color:var(--text-secondary); font-size:13px;">
+                    Состав вашей учебной группы.
+                </p>
+            </div>
+            <div class="members-grid" id="membersList">
+                <!-- Статические карточки участников -->
                 <div class="member-card">
-                    <div class="member-avatar">${m.avatar || m.name.charAt(0)}</div>
-                    <h4>${escapeHtml(m.name)}</h4>
-                    <p>${escapeHtml(m.role)}</p>
-                    <button class="btn btn-danger btn-sm" style="margin-top:8px;" onclick="removeMember(${index})">Remove</button>
+                    <div class="member-avatar">АИ</div>
+                    <h4>Алексей Иванов</h4>
+                    <p>Староста</p>
                 </div>
-            `).join('');
-        updateStats();
-    }
+                <div class="member-card">
+                    <div class="member-avatar">МС</div>
+                    <h4>Мария Смирнова</h4>
+                    <p>Ответственная за конспекты</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-avatar">ДК</div>
+                    <h4>Дмитрий Кузнецов</h4>
+                    <p>Технический специалист</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-avatar">ЕП</div>
+                    <h4>Елена Петрова</h4>
+                    <p>Организатор мероприятий</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-avatar">НВ</div>
+                    <h4>Николай Волков</h4>
+                    <p>Участник</p>
+                </div>
+            </div>
+        </div>
 
-    function removeMember(index) {
-        if (confirm(`Remove ${members[index].name} from the group?`)) {
-            members.splice(index, 1);
-            setData('ug_members', members);
-            renderMembers();
-            showToast('Member removed.');
+    </main>
+
+    <!-- ============ TOAST CONTAINER ============ -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script>
+        // ============ THEME ============
+        const themeToggle = document.getElementById('themeToggle');
+        const savedTheme = localStorage.getItem('spbpu_theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        themeToggle.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+
+        themeToggle.addEventListener('click', () => {
+            const current = document.documentElement.getAttribute('data-theme');
+            const next = current === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', next);
+            localStorage.setItem('spbpu_theme', next);
+            themeToggle.textContent = next === 'dark' ? '☀️' : '🌙';
+        });
+
+        // ============ NAVIGATION ============
+        const sectionNames = {
+            dashboard: { title: 'Главная', subtitle: 'Добро пожаловать!' },
+            notices: { title: 'Доска объявлений', subtitle: 'Актуальная информация' },
+            'deadlines-static': { title: 'Дедлайны', subtitle: 'Сроки сдачи работ' },
+            maps: { title: 'Карта', subtitle: 'Навигация по кампусу' },
+            timetable: { title: 'Расписание', subtitle: 'Недельное расписание' },
+            members: { title: 'Участники', subtitle: 'Состав группы' },
+        };
+
+        function navigateTo(sectionId) {
+            // Update sidebar active state
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.toggle('active', link.dataset.section === sectionId);
+            });
+            // Update sections
+            document.querySelectorAll('.section').forEach(sec => {
+                sec.classList.remove('active');
+            });
+            const targetSection = document.getElementById(`section-${sectionId}`);
+            if (targetSection) targetSection.classList.add('active');
+            // Update page title
+            const info = sectionNames[sectionId] || { title: 'Главная', subtitle: '' };
+            document.getElementById('pageTitle').textContent = info.title;
+            document.getElementById('pageSubtitle').textContent = info.subtitle;
+            // Close mobile sidebar
+            closeSidebar();
         }
-    }
 
-    // ============ STATS & DASHBOARD ============
-    function updateStats() {
-        document.getElementById('statNotes').textContent = notes.length;
-        document.getElementById('statDeadlines').textContent = deadlines.length;
-        document.getElementById('statMembers').textContent = members.length;
-    }
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const sectionId = link.dataset.section;
+                navigateTo(sectionId);
+            });
+        });
 
-    function updateDashboardUpcoming() {
-        const container = document.getElementById('dashboardUpcoming');
-        if (deadlines.length === 0) {
-            container.innerHTML = `
-                    <div class="empty-state">
-                        <div class="empty-icon">📭</div>
-                        <h4>No deadlines yet</h4>
-                        <p style="font-size:13px;">Add a deadline to see it here!</p>
-                    </div>
-                `;
-            return;
+        // ============ SIDEBAR (Mobile) ============
+        const sidebar = document.getElementById('sidebar');
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const overlay = document.getElementById('overlay');
+
+        function openSidebar() {
+            sidebar.classList.add('open');
+            overlay.classList.add('show');
         }
-        const sorted = [...deadlines].sort((a, b) => new Date(a.date) - new Date(b.date)).slice(0, 3);
-        container.innerHTML = sorted.map(d => {
-            const days = getDaysRemaining(d.date);
-            const urgency = days < 0 ? '🔴 Overdue' : days <= 3 ? '⚡ Urgent' : days <= 7 ? '⏳ Soon' : '✅ OK';
-            return `
-                    <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid var(--border);">
-                        <div>
-                            <strong style="font-size:14px;">${escapeHtml(d.title)}</strong>
-                            <br><span style="font-size:12px; color:var(--text-secondary);">${d.date}</span>
-                        </div>
-                        <span style="font-size:12px; font-weight:600;">${urgency}</span>
-                    </div>
-                `;
-        }).join('');
-    }
 
-    function updateDashboard() {
-        updateStats();
-        updateDashboardUpcoming();
-    }
+        function closeSidebar() {
+            sidebar.classList.remove('open');
+            overlay.classList.remove('show');
+        }
 
-    // ============ UTILITY ============
-    function escapeHtml(text) {
-        const div = document.createElement('div');
-        div.textContent = text;
-        return div.innerHTML;
-    }
+        hamburgerBtn.addEventListener('click', () => {
+            if (sidebar.classList.contains('open')) {
+                closeSidebar();
+            } else {
+                openSidebar();
+            }
+        });
 
-    // ============ INIT ============
-    function init() {
-        renderNotes();
-        renderDeadlines();
-        renderMembers();
-        updateStats();
-        updateDashboardUpcoming();
-        // Set default date to today
-        const today = new Date().toISOString().split('T')[0];
-        document.getElementById('deadlineDate').value = today;
-    }
+        overlay.addEventListener('click', closeSidebar);
 
-    init();
-</script>
+        // ============ TOAST ============
+        function showToast(message, type = 'success') {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            toast.innerHTML = `✅ ${message}`;
+            container.appendChild(toast);
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transition = 'opacity 0.3s ease';
+                setTimeout(() => toast.remove(), 300);
+            }, 2500);
+        }
+
+        // ============ MAPS ============
+        function focusMap(location) {
+            const mapFrame = document.getElementById('mapFrame');
+            const encoded = encodeURIComponent(location + ' СПбПУ');
+            mapFrame.src = `https://www.google.com/maps?q=${encoded}&output=embed`;
+            showToast(`Показано: ${location}`);
+        }
+    </script>
 
 </body>
-                                               </html>
+</html>
