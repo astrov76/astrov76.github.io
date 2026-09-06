@@ -44,6 +44,7 @@ body {
     color: var(--text);
     line-height: 1.6;
     padding: 20px;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 header {
