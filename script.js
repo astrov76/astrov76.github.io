@@ -1,3 +1,26 @@
+// ========== Dark Mode Toggle ==========
+const themeToggle = document.getElementById('themeToggle');
+const body = document.body;
+
+// Check saved theme
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme === 'dark') {
+    body.classList.add('dark-theme');
+    themeToggle.textContent = '☀️ Light Mode';
+}
+
+// Toggle theme on click
+themeToggle.addEventListener('click', () => {
+    body.classList.toggle('dark-theme');
+    if (body.classList.contains('dark-theme')) {
+        themeToggle.textContent = '☀️ Light Mode';
+        localStorage.setItem('theme', 'dark');
+    } else {
+        themeToggle.textContent = '🌙 Dark Mode';
+        localStorage.setItem('theme', 'light');
+    }
+});
+
 // Fetch video data from videos.json
 fetch('videos.json')
     .then(response => response.json())
