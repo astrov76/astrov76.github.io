@@ -1,4 +1,12 @@
-:root
+:root 
+{
+    --primary: #2c3e50;
+    --accent: #3498db;
+    --bg: #f8f9fa;
+    --card-bg: #ffffff;
+    --text: #333;
+}
+
 body.dark-theme {
     --primary: #ecf0f1;
     --accent: #5dade2;
@@ -23,15 +31,6 @@ body.dark-theme {
 .theme-toggle:hover {
     background-color: var(--primary);
     color: var(--bg);
-}
-
-
-{
-    --primary: #2c3e50;
-    --accent: #3498db;
-    --bg: #f8f9fa;
-    --card-bg: #ffffff;
-    --text: #333;
 }
 
 * {
