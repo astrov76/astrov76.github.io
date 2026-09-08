@@ -6,6 +6,13 @@
       "youtubeUrl": "https://www.youtube.com/watch?v=52LCiUJFGos",
       "description": "Вводная лекция первого курса",
       "date": "04-09-2026"
+    },
+    {
+      "title": "Лекция 2. Функции, Отображения множеств",
+      "category": "Вышмат",
+      "youtubeUrl": "https://www.youtube.com/watch?v=qZdiiH7oxb4",
+      "description": "Лекция затрагивает тему применения функций к множествам, отображения, свойства отображений, умножение отображений и.т.д",
+      "date": "08-09-2026"
     }
   ]
 }
