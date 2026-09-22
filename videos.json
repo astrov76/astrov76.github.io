@@ -29,11 +29,18 @@
       "date": "15-09-2026"
     },
     {
-      "title": "Лекция 5. Комплексно-сопряженные числа, сопряжени",
+      "title": "Лекция 5. Комплексно-сопряженные числа, сопряжения",
       "category": "Вышмат",
       "youtubeUrl": "https://www.youtube.com/watch?v=XgZOThIr90I",
       "description": "Лекция 5",
       "date": "18-09-2026"
+    },
+    {
+      "title": "Лекция 6. Последовательности, предел последовательности",
+      "category": "Вышмат",
+      "youtubeUrl": "https://www.youtube.com/watch?v=FKgZWipdQZ8",
+      "description": "Лекция 6",
+      "date": "22-09-2026"
     }
   ]
 }
