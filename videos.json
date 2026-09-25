@@ -41,6 +41,13 @@
       "youtubeUrl": "https://www.youtube.com/watch?v=FKgZWipdQZ8",
       "description": "Лекция 6",
       "date": "22-09-2026"
+    },
+    {
+      "title": "Лекция 7. Больше пределов.",
+      "category": "Вышмат",
+      "youtubeUrl": "https://www.youtube.com/watch?v=sO3LODQRbHo",
+      "description": "Лекция 7",
+      "date": "25-09-2026"
     }
   ]
 }
