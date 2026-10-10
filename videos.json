@@ -69,6 +69,13 @@
       "youtubeUrl": "https://www.youtube.com/watch?v=kBviBOZ2EIk",
       "description": "Лекция 10",
       "date": "6-10-2026"
+    },
+    {
+      "title": "Лекция 11.",
+      "category": "Вышмат",
+      "youtubeUrl": "https://www.youtube.com/watch?v=G9lp8UnjViw",
+      "description": "Лекция 11",
+      "date": "6-10-2026"
     }
   ]
 }
