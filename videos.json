@@ -83,6 +83,27 @@
       "youtubeUrl": "https://www.youtube.com/watch?v=eyB7n9f-rEA",
       "description": "Лекция 12",
       "date": "6-10-2026"
+    },
+    {
+      "title": "Лекция 13.",
+      "category": "Вышмат",
+      "youtubeUrl": "https://www.youtube.com/watch?v=O5USATwdQKE",
+      "description": "Лекция 13",
+      "date": "6-10-2026"
+    },
+    {
+      "title": "Лекция 14.",
+      "category": "Вышмат",
+      "youtubeUrl": "https://www.youtube.com/watch?v=1R0zAfs4H4I",
+      "description": "Лекция 14",
+      "date": "6-10-2026"
+    },
+    {
+      "title": "Лекция 15.",
+      "category": "Вышмат",
+      "youtubeUrl": "https://www.youtube.com/watch?v=MlUXnY7YPaU",
+      "description": "Лекция 15",
+      "date": "6-10-2026"
     }
   ]
 }
